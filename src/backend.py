@@ -108,7 +108,7 @@ class BingAI:
                         f"<b>You</b>: {html.escape(self.text)}\n\n"
                         f"<b>Bing</b>: {html.escape(resp)}"
                     )
-                    if len(text) < 4000:
+                    if len(text) < 4096:
                         if not self.inline:
                             await ut.edit(self.edit, text)
                         else:
@@ -283,7 +283,7 @@ class BingAI:
         suggestions = ut.markup(bt_lst)
         question = f"<b>You</b>: {html.escape(self.text)}\n\n"
         msg = self.add_throttling(f"{question}{text}{extra}")
-        if len(msg) > 4000:
+        if len(msg) > 4096:
             if not self.inline:
                 await ut.edit(
                     self.edit,
